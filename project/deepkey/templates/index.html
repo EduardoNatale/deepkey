@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Makipikipi</title>
+  {% load staticfiles %}
+  <link href="{% static 'index.css' %}" rel="stylesheet">
+</head>
+<body>
+    <form class="box" method="post">
+        {% csrf_token %}
+        <h1>DeepKey</h1>
+        <input type="text" id='input-password' autofocus placeholder="Digite sua senha">
+        <input type="text" id='input-password1'>
+        <button type="submit">Login</button>
+    </form>
+
+    <div class="sk-folding-cube">
+      <div class="sk-cube1 sk-cube"></div>
+      <div class="sk-cube2 sk-cube"></div>
+      <div class="sk-cube4 sk-cube"></div>
+      <div class="sk-cube3 sk-cube"></div>
+    </div>
+    <script src="{% static '/assets/javascript/deepkey.js' %}"></script>
+</body>
+</html>
