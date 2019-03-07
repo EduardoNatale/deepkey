@@ -74,7 +74,7 @@ body {
 
 .table1{
   position: relative;
-  height: 250px;
+  height: 240px;
   overflow: auto;
   display: block;
 }
@@ -88,7 +88,7 @@ body {
 
 .table3{
   position: relative;
-  height: 274px;
+  height: 240px;
   overflow: auto;
   display: block;
 }
