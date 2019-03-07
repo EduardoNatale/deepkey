@@ -4,12 +4,7 @@ body {
 }
 
 .box {
-    /* width: 400px; */
     padding: 40px;
-    /* position: absolute; */
-    /* top: 30%;
-    left: 7%; */
-    /* transform: translate(-50%, -15%); */
     background: #373B42;
     text-align: center;
 }
@@ -77,9 +72,23 @@ body {
     background: #3498db;
 }
 
-.myasd{
+.table1{
   position: relative;
-  height: 500px;
+  height: 250px;
+  overflow: auto;
+  display: block;
+}
+
+.table2{
+  position: relative;
+  height: 274px;
+  overflow: auto;
+  display: block;
+}
+
+.table3{
+  position: relative;
+  height: 274px;
   overflow: auto;
   display: block;
 }
