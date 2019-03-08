@@ -78,25 +78,14 @@ input.onkeyup = function(e) {
 }
 
 function myFunction() {
-  document.getElementById('inputTable1').value = lTable1;
-  document.getElementById('inputTable2').value = lTable2;
-  document.getElementById('inputTable3').value = lTable3;
+  if (document.getElementById('input-password').value == 'qwerty123') {
+    document.getElementById('inputTable1').value = lTable1;
+    document.getElementById('inputTable2').value = lTable2;
+    document.getElementById('inputTable3').value = lTable3;
+  } else {
+    alert('A senha está errada');
+  }
 }
-
-// $("#button").click(function(e) {
-//   e.preventDefault();
-//   $.ajax({
-//     type: "POST",
-//     url: 'http://127.0.0.1:8000/',
-//     data: {
-//         'lTable1': lTable1,
-//         'csrfmiddlewaretoken': $('input[name="csrfmiddlewaretoken"]').val()
-//     },
-//     sucess: function() {
-//       alert('da');
-//     }
-//   });
-// });
 
 setInterval(function(){
   add2table1();

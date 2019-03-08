@@ -6,6 +6,9 @@ def deepkey(request):
         table1 = brokenData(request.POST.get('inputTable1', None), 3)
         table2 = brokenData(request.POST.get('inputTable2', None), 3)
         table3 = brokenData(request.POST.get('inputTable3', None), 3)
+
+
+
         with open('tabela1.csv', 'a') as csv1:
             writer = csv.writer(csv1)
             writer.writerows(table1)
