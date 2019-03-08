@@ -65,16 +65,20 @@ function scrollDiv3(){
 }
 
 input.onkeydown = function(e) {
+  if (e.keyCode != 13) {
     add2table2(e);
     scrollDiv2();
     manyTimes += 1;
     add2table3('DOWN');
     scrollDiv3();
+  }
 }
 
 input.onkeyup = function(e) {
+  if (e.keyCode != 13) {
     add2table3('UP');
     scrollDiv3();
+  }
 }
 
 function myFunction() {
