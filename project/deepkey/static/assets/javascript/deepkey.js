@@ -86,8 +86,6 @@ function myFunction() {
     document.getElementById('inputTable1').value = lTable1;
     document.getElementById('inputTable2').value = lTable2;
     document.getElementById('inputTable3').value = lTable3;
-  } else {
-    alert('A senha está errada');
   }
 }
 
