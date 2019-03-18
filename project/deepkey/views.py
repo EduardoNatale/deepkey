@@ -26,6 +26,7 @@ def deepkey(request):
             if len(brokenData(request.POST.get('inputTable3', None), 3)) == 18:
                 du, uu, dd = tranformInformationWCsv(brokenData(request.POST.get('inputTable3', None), 3))
                 ddu, duu, ddd = verifyItself(du, uu, dd)
+                4
 
                 if ddu >= 0.98 and ddu >= 0.97 and ddd >= 0.96:
                     return render(request, 'index.html', {'message': 'Bem vindo'})
