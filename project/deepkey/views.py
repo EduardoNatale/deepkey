@@ -196,3 +196,51 @@ def tranformInformationWCsv(data):
                 ddData.append(int(down_1) - int(down))
 
     return duData, uuData, ddData
+
+def vectorizeDynamicData():
+
+    # path to dataframe file
+    DF_FILE = ''
+
+    # time that breaks timeseries
+    TIME_TRSHLD = 1.2
+
+    input_df = pd.read_csv(DF_FILE,header = None)
+
+    # list that contains stops in dynamic types
+    breaks=[]
+
+    for idx in input_df.index:
+        if not idx < len(df):
+            break               # breaks when it is done
+
+        atsp = df[1].iloc[idx] # actual timestamp
+        ntsp = df[1].iloc[idx+1] # next timestamp
+
+        dist = ntsp - atsp       # distance between
+
+        if dist > TIME_TRSHLD:  # if difference between typing is greater then threshold
+            breaks.append(ntsp)
+
+    # three types of data
+    small = []
+    medium = []
+    large = []
+
+    # separates the chunks of data into 3 groups
+    for i in range(len(breaks)):
+        if not i < len(breaks):
+            break
+
+        actual = breaks[i]      # start of time series
+        next = breaks[i+1]      # end of time series
+
+        diff = next - actual    # difference between all keyboard events (down & up)
+        if diff < 30:
+            small.append(actual)
+
+        elif diff < 60:
+            medium.append(actual)
+
+        elif diff < 90:
+            large.append(actual)
