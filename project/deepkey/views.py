@@ -211,11 +211,11 @@ def vectorizeDynamicData():
     breaks=[]
 
     for idx in input_df.index:
-        if not idx < len(df):
+        if not idx < len(input_df):
             break               # breaks when it is done
 
-        atsp = df[1].iloc[idx] # actual timestamp
-        ntsp = df[1].iloc[idx+1] # next timestamp
+        atsp = input_df[1].iloc[idx] # actual timestamp
+        ntsp = input_df[1].iloc[idx+1] # next timestamp
 
         dist = ntsp - atsp       # distance between
 
