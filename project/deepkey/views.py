@@ -4,7 +4,7 @@ import pandas as pd
 import numpy as np
 from scipy import spatial
 
-def deepkey(request):
+def modelo1(request):
     if request.method == 'POST':
         if request.POST.get('input-password', None) == 'qwerty123':
             # table1 = brokenData(request.POST.get('inputTable1', None), 3)
@@ -26,18 +26,30 @@ def deepkey(request):
             if len(brokenData(request.POST.get('inputTable3', None), 3)) == 18:
                 du, uu, dd = tranformInformationWCsv(brokenData(request.POST.get('inputTable3', None), 3))
                 ddu, duu, ddd = verifyItself(du, uu, dd)
-                4
 
-                if ddu >= 0.98 and ddu >= 0.97 and ddd >= 0.96:
-                    return render(request, 'index.html', {'message': 'Bem vindo'})
+                print(du)
+                print(uu)
+                print(dd)
+
+                if ddu >= 0.98 and duu >= 0.97 and ddd >= 0.96:
+                    return render(request, 'modelo1.html', {'message': 'Bem vindo'})
                 else:
-                    return render(request, 'index.html', {'error': 'Você não é quem diz ser'})
+                    return render(request, 'modelo1.html', {'error': 'Você não é quem diz ser'})
             else:
-                return render(request, 'index.html', {'error': 'Digite a sua senha sem errar'})
+                return render(request, 'modelo1.html', {'error': 'Digite a sua senha sem errar'})
         else:
-            return render(request, 'index.html', {'error': 'Senha incorreta'})
+            return render(request, 'modelo1.html', {'error': 'Senha incorreta'})
 
-    return render(request, 'index.html')
+    return render(request, 'modelo1.html')
+
+def modelo2(request):
+    if request.method == 'POST':
+        table = brokenData(request.POST["data"], 3)
+        # with open('tableModelo2.csv', 'a') as csv:
+        #     writer = csv.writer(csv)
+        #     writer.writerows(table)
+
+    return render(request, 'modelo2.html')
 
 def brokenData(data, n):
     listinha = []

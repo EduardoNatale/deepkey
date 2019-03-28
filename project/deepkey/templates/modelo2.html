@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% load staticfiles %}
+
+    <br>
+    <div class="container">
+        <form name="myform" id="myform" method="POST">
+            {% csrf_token %}
+            <div class="form-group shadow-textarea">
+              <label for="txtArea1">Copie este texto</label>
+              <textarea class="form-control z-depth-1" id="txtArea1" rows="7">
+Mas não havia nem esperança de aplicar aquilo em minha vida. No entanto, dez anos mais tarde, quando estávamos projetando o primeiro Macintosh, me lembrei de tudo aquilo. E o projeto do Mac incluía esse aprendizado. Foi o primeiro computador com uma bela tipografia. Sem aquele curso, o Mac não teria múltiplas fontes. E, porque o Windows era só uma cópia do Mac, talvez nenhum computador viesse a oferecê-las, sem aquele curso. É claro que conectar os pontos era impossível, na minha era de faculdade. Mas em retrospecto, dez anos mais tarde, tudo ficava bem claro.
+              </textarea>
+            </div>
+
+            <br>
+
+            <div class="form-group shadow-textarea">
+                <label for="txtArea2">Aqui</label>
+              <textarea class="form-control z-depth-1" id="txtArea2" rows="7"></textarea>
+            </div>
+
+            <input type="text" id='data' name='data' hidden>
+
+            <button type="submit" class="btn btn-danger btn-lg btn-block" onclick="myFunction()">Enviar</button>
+        </form>
+    </div>
+
+    <script src="{% static '/assets/javascript/modelo2.js' %}"></script>
+
+{% endblock %}
