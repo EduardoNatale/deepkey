@@ -45,9 +45,9 @@ def modelo1(request):
 def modelo2(request):
     if request.method == 'POST':
         table = brokenData(request.POST["data"], 3)
-        # with open('tableModelo2.csv', 'a') as csv:
-        #     writer = csv.writer(csv)
-        #     writer.writerows(table)
+        with open('tableModelo2.csv', 'a') as csv_file:
+            writer = csv.writer(csv_file)
+            writer.writerows(table)
 
     return render(request, 'modelo2.html')
 
@@ -244,4 +244,3 @@ def vectorizeDynamicData():
 
         elif diff < 90:
             large.append(actual)
-            
