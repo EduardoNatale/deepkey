@@ -244,3 +244,4 @@ def vectorizeDynamicData():
 
         elif diff < 90:
             large.append(actual)
+            

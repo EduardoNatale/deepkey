@@ -39,6 +39,15 @@
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
+=======
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/project/deepkey/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="364">
+              <caret line="49" column="37" lean-forward="true" selection-start-line="49" selection-start-column="37" selection-end-line="49" selection-end-column="37" />
+=======
+>>>>>>> 23b061930c68d8f6243fb19e20522b6770e484a4
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/project/deepkey/views.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -55,6 +64,9 @@
             <state relative-caret-position="-141">
               <caret line="203" lean-forward="true" selection-start-line="203" selection-end-line="203" />
 >>>>>>> 1d48f1e6393948e0de0c55c0ad279c0292f8607f
+<<<<<<< HEAD
+>>>>>>> 23b061930c68d8f6243fb19e20522b6770e484a4
+=======
 >>>>>>> 23b061930c68d8f6243fb19e20522b6770e484a4
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
@@ -345,6 +357,9 @@
         <state relative-caret-position="-141">
           <caret line="203" lean-forward="true" selection-start-line="203" selection-end-line="203" />
 >>>>>>> 1d48f1e6393948e0de0c55c0ad279c0292f8607f
+<<<<<<< HEAD
+>>>>>>> 23b061930c68d8f6243fb19e20522b6770e484a4
+=======
 >>>>>>> 23b061930c68d8f6243fb19e20522b6770e484a4
           <folding>
             <element signature="e#0#35#0" expanded="true" />
