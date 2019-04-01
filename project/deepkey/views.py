@@ -1,8 +1,14 @@
 from django.shortcuts import render
-import csv
+import csv, random
 import pandas as pd
 import numpy as np
 from scipy import spatial
+
+texts = ['Matéria-prima: Em marcenaria compreende-se por matéria-prima, todo omaterial que entra na confecção dos móveis, tendo por substância essencial amadeira. Definição da madeira. Madeira é uma substância compacta e sólida, quecompõe as raízes, o tronco e as ramas das árvores e dos arbustos. E um conjunto detecidos (parte sólida de um corpo organizado). Seu elemento fundamental é o tecidovascular, constituído de vasos compostos de longas células (pequenas cavidadessobrepostas topo a topo, em filas longitudinais ininterruptas).',
+         'Rudimentos de Botânica. A água é o elemento mais necessário à vida vegetal.As raízes, que são órgãos de absorção, sugam da terra o alimento necessário à nutriçãoda planta. A raiz divide-se em três partes: corpo, que é a parte central, prolongamentodo caule; colo ou nó vital, ponto em que o caule se separa da raiz, e as radículas, cujasextremidades, chamadas espongíolos, são os órgãos ativos da absorção.',
+         'Caule é a parte da planta que cresce em sentido inverso ao da raiz e quesustenta os galhos, as folhas, as flores e os frutos. Folha é o órgão respiratório dasplantas. Divide-se em duas partes: limbo e pecíolo. No limbo, que é uma lâmina verdee chata, de várias formas, notam-se duas faces, uma superior, mais colorida, e outrainferior; a base, o vértice, a orla. As folhas transpiram pela face superior e absorvem aumidade pela face inferior. Realizam assim as suas duas importantes funções deexalação e absorção. Pecíolo. É assim chamada a parte da folha que prende o limbo aogalho ou ramo. Talo. Chama-se assim a fibra grossa que se estende pelo meio da folha,prolongando-se, às vezes, até confundir-se com o pecíolo.',
+         'A música é uma forma de arte que se constitui na combinação de vários sons e ritmos, seguindo uma pré-organização ao longo do tempo. É considerada por diversos autores como uma prática cultural e humana. Não se conhece nenhuma civilização ou agrupamento que não possua manifestações musicais próprias.',
+         'O café é uma bebida produzida a partir dos grãos torrados do fruto do cafeeiro. É servido tradicionalmente quente, mas também pode ser consumido gelado. O café é um estimulante, por possuir cafeína — geralmente 80 a 140 mg para cada 207 ml dependendo do método de preparação.']
 
 def modelo1(request):
     if request.method == 'POST':
@@ -44,26 +50,26 @@ def modelo1(request):
 
 def modelo2(request):
     if request.method == 'POST':
-        if not request.POST["data"]:
-            return render(request, 'modelo2.html', {"false": True})
+        # if not request.POST["data"]:
+        #     return render(request, 'modelo2.html', {"false": True, "texto": texts[random.randint(0, 4)]})
 
         table = brokenData(request.POST["data"], 3)
 
-        with open('user.csv', 'w') as csv_file:
-            writer = csv.writer(csv_file)
-            writer.writerows(table)
-
-        if (compareModel2(moreData())):
-            return render(request, 'modelo2.html', {"true": True})
-        else:
-            return render(request, 'modelo2.html', {"false": True})
-
-        # with open('tableModelo2.csv', 'a') as csv_file:
+        # with open('user.csv', 'w') as csv_file:
         #     writer = csv.writer(csv_file)
         #     writer.writerows(table)
+        #
+        # if (compareModel2(moreData())):
+        #     return render(request, 'modelo2.html', {"true": True, "texto": texts[random.randint(0, 4)]})
+        # else:
+        #     return render(request, 'modelo2.html', {"false": True, "texto": texts[random.randint(0, 4)]})
+
+        with open('table2Modelo2.csv', 'a') as csv_file:
+            writer = csv.writer(csv_file)
+            writer.writerows(table)
     # moreData()
 
-    return render(request, 'modelo2.html')
+    return render(request, 'modelo2.html', {"texto": texts[random.randint(0, 4)]})
 
 def brokenData(data, n):
     listinha = []
@@ -374,7 +380,7 @@ def compareModel2(my_chunks):
 
     print(str(ok) + " de " + str(len(my_chunks) * len(chunks)))
 
-    if (ok > len(my_chunks) * len(chunks)):
+    if (ok >= (len(my_chunks) * len(chunks)) / 2):
         return True
     else:
         return False
