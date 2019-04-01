@@ -17,6 +17,17 @@ So I have, myself, full confidence that if all do their duty, if nothing is negl
 
             <br>
 
+            {% if true %}
+                <div class="alert alert-success" role="alert">
+                  Parabéns
+                </div>
+            {% endif %}
+            {% if false %}
+                <div class="alert alert-danger" role="alert">
+                  Puts
+                </div>
+            {% endif %}
+
             <div class="form-group shadow-textarea">
                 <label for="txtArea2">Aqui</label>
               <textarea class="form-control z-depth-1" id="txtArea2" rows="7"></textarea>

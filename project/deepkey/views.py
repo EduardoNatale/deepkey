@@ -44,10 +44,24 @@ def modelo1(request):
 
 def modelo2(request):
     if request.method == 'POST':
+        if not request.POST["data"]:
+            return render(request, 'modelo2.html', {"false": True})
+
         table = brokenData(request.POST["data"], 3)
-        with open('tableModelo2.csv', 'a') as csv_file:
+
+        with open('user.csv', 'w') as csv_file:
             writer = csv.writer(csv_file)
             writer.writerows(table)
+
+        if (compareModel2(moreData())):
+            return render(request, 'modelo2.html', {"true": True})
+        else:
+            return render(request, 'modelo2.html', {"false": True})
+
+        # with open('tableModelo2.csv', 'a') as csv_file:
+        #     writer = csv.writer(csv_file)
+        #     writer.writerows(table)
+    # moreData()
 
     return render(request, 'modelo2.html')
 
@@ -244,3 +258,123 @@ def vectorizeDynamicData():
 
         elif diff < 90:
             large.append(actual)
+
+def moreData():
+    df = pd.read_csv('tableModelo2.csv', header=None)
+
+    lData = []
+    mData = []
+    mmData = []
+    for row in df.iterrows():
+        index, data = row
+
+        if data[0] == 0 and index != 0:
+            lData.append(mData)
+            mData = []
+        mmData = []
+        for value in data:
+            mmData.append(value)
+        mData.append(mmData)
+
+        if index == len(df) - 1:
+            lData.append(mData)
+
+    chunkDOWN = []
+
+    for first in lData:
+        for second in first:
+            if second[2] == "DOWN":
+                chunkDOWN.append(second)
+
+    mini = []
+    dd = []
+    for i in chunkDOWN:
+        mini.append(i)
+        if (len(mini) == 2):
+            dd.append(mini[1][1] - mini[0][1])
+            mini = []
+            mini.append(i)
+
+    ba = []
+    chunks = []
+
+    for i, value in enumerate(dd):
+        ba.append(value)
+        if (i + 1) % 30 == 0:
+            chunks.append(ba)
+            ba = []
+
+    return chunks
+
+    # chunks = []
+    # mChunk = []
+    # for data in dd:
+    #     if data >= 1000 and data <= 2000:
+    #         chunks.append(mChunk)
+    #         mChunk = []
+    #     mChunk.append(data)
+    #
+    # chunks.append(mChunk)
+
+def compareModel2(my_chunks):
+    df = pd.read_csv('user.csv', header=None)
+
+    lData = []
+    mData = []
+    mmData = []
+    for row in df.iterrows():
+        index, data = row
+
+        if data[0] == 0 and index != 0:
+            lData.append(mData)
+            mData = []
+        mmData = []
+        for value in data:
+            mmData.append(value)
+        mData.append(mmData)
+
+        if index == len(df) - 1:
+            lData.append(mData)
+
+    chunkDOWN = []
+
+    for first in lData:
+        for second in first:
+            if second[2] == "DOWN":
+                chunkDOWN.append(second)
+
+    mini = []
+    dd = []
+    for i in chunkDOWN:
+        mini.append(i)
+        if (len(mini) == 2):
+            dd.append(mini[1][1] - mini[0][1])
+            mini = []
+            mini.append(i)
+
+    ba = []
+    chunks = []
+
+    for i, value in enumerate(dd):
+        ba.append(value)
+        if (i + 1) % 30 == 0:
+            chunks.append(ba)
+            ba = []
+
+    if len(chunks) == 0:
+        return False
+
+    ok = 0
+    for my_chunk in my_chunks:
+        for i in range(len(chunks)):
+            print(distanceCosine(my_chunk, chunks[i]))
+            if (distanceCosine(my_chunk, chunks[i]) >= 0.70):
+                ok += 1
+        print()
+
+    print(str(ok) + " de " + str(len(my_chunks) * len(chunks)))
+
+    if (ok > len(my_chunks) * len(chunks)):
+        return True
+    else:
+        return False
